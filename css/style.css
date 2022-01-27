@@ -14,7 +14,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  clip-path: polygon(50% 0%, 100% 0, 100% 86%, 75% 100%, 0 85%, 0 0);
+  /* clip-path: polygon(50% 0%, 100% 0, 100% 86%, 75% 100%, 0 85%, 0 0); */
 }
 .sidebar {
   visibility: hidden;
