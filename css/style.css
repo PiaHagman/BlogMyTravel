@@ -1,0 +1,58 @@
+body {
+  background-color: #ece4db;
+  margin: 0;
+}
+
+#main {
+  transition: margin-left 0.5s;
+}
+
+.topbanner {
+  background-image: url(../images/bg-pic.jpeg);
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  clip-path: polygon(50% 0%, 100% 0, 100% 86%, 75% 100%, 0 85%, 0 0);
+}
+.sidebar {
+  visibility: hidden;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #8c8275;
+  overflow-x: hidden;
+  /* transition: 0.5s; */
+  padding-top: 60px;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.openbtn {
+  font-size: 20px;
+  margin-left: 25px;
+  margin-top: 25px;
+  cursor: pointer;
+  background-color: #8c8275;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s; /* If you want a transition effect */
+  padding: 20px;
+}

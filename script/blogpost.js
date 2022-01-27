@@ -1,3 +1,5 @@
-export class BlogPost {
+//Lägg till export class...
+
+class BlogPost {
   costructor() {}
 }
