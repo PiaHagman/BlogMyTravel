@@ -9,26 +9,27 @@ export class BlogPost {
    * @param
    *
    */
-  costructor() {
+  constructor() {
     this.post = [
       {
-        image: (image.src = "../images/prag.jpeg"),
+        image: "../images/prag.jpeg",
         title: "Frukost i Prag",
-        date: Date.now(),
+        /* date: new Date(Date.now()).toString(), */
+        date: new Date("January 28, 2022 00:00:00"),
         text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. ",
         author: "MissLi",
       },
       {
-        image: (image.src = "../images/prag.jpeg"),
+        image: "../images/prag.jpeg",
         title: "Frukost i Prag",
-        date: Date.now(),
+        date: new Date("January 27, 2022 00:00:00"),
         text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. ",
         author: "MissLi",
       },
       {
-        image: (image.src = "../images/prag.jpeg"),
+        image: "../images/prag.jpeg",
         title: "Frukost i Prag",
-        date: Date.now(),
+        date: new Date("January 26, 2022 00:00:00"),
         text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. ",
         author: "MissLi",
       },
@@ -39,7 +40,7 @@ export class BlogPost {
     const newPost = {
       image: givenImage,
       title: givenTitle,
-      date: Date.now(),
+      date: new Date(Date.now()).toString(),
       text: givenText,
       author: givenAuthor,
     };

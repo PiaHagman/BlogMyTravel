@@ -16,20 +16,32 @@ const blog = new BlogPost();
 function printBlogPosts() {
   document.getElementById("masterTitle").innerHTML = "Blog My Travel";
 
-  /* const blogList = document.getElementById("blogList");
+  const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";
 
   for (let i = 0; i < blog.post.length; i++) {
     const obj = blog.post[i];
 
     const img = document.createElement("img");
-    img.innerHTML = obj.image;
-    blogList.appendChild(img); 
+    img.src = obj.image;
+    blogList.append(img);
 
     const title = document.createElement("h1");
     title.innerHTML = obj.title;
     blogList.append(title);
-  } */
+
+    const date = document.createElement("p");
+    date.innerText = obj.date;
+    blogList.append(date);
+
+    const text = document.createElement("p");
+    text.innerText = obj.text;
+    blogList.append(text);
+
+    const author = document.createElement("p");
+    author.innerText = obj.author;
+    blogList.append(author);
+  }
 }
 
 printBlogPosts();
