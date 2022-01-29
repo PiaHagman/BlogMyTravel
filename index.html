@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
     <title>Blog My Travel</title>
     <link rel="stylesheet" href="css\style.css" />
     <!--   <link
@@ -18,13 +26,15 @@
     <div class="topbanner" id="topbanner">
       <button class="openbtn">☰</button>
     </div>
-    <div id="main">
+    <section id="main">
       <h1 id="masterTitle"></h1>
-      <button type="button">Lägg till</button>
-      <input />
-      <div id="blogList"></div>
-    </div>
+      <section id="form">
+        <button type="button">Lägg till</button>
+        <input />
+      </section>
+
+      <div id="blogList" class="container"></div>
+    </section>
     <script type="module" src="script/main.js"></script>
-    <!-- <script src="script/blogPost.js"></script> -->
   </body>
 </html>
