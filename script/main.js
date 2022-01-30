@@ -5,6 +5,8 @@ const blog = new BlogPost();
 printBlogPosts();
 printForm();
 
+document.getElementById("logo").src = "../images/logo3.png";
+
 function printForm() {
   const form = document.getElementById("form");
   form.innerHTML = "";
@@ -40,25 +42,31 @@ function printForm() {
 }
 
 //Lägga till ny Todo
-document.querySelector("#main > button").onclick = function () {
-  const input = document.querySelector("#main > input");
-  const postTitle = input.value;
-  blog.addNewPost(postTitle);
+document.querySelector("#form > button").onclick = function () {
+  const image = document.querySelector("#input-img").value;
+  const title = document.querySelector("#input-title").value;
+  const text = document.querySelector("#input-text").value;
+  const author = document.querySelector("#input-author").value;
+
+  blog.addNewPost(image, title, text, author);
+  alert("Grattis! Du har nu delat din upplevelse med hela världen.");
+  printBlogPosts();
+
+  //Uppdatera SideBar
 };
 
-/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+/*Sidebar döljs*/
 document.querySelector("#sidebar > button").onclick = function () {
   document.getElementById("sidebar").style.visibility = "hidden";
 };
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+/*Sidebar visas*/
 document.querySelector("#topbanner > button").onclick = function () {
   document.getElementById("sidebar").style.visibility = "visible";
+  printSideBarContent();
 };
 
 function printBlogPosts() {
-  document.getElementById("masterTitle").innerHTML = "Blog My Travel";
-
   const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";
 
@@ -67,10 +75,12 @@ function printBlogPosts() {
 
     const img = document.createElement("img");
     img.classList = "post-image";
+    img.id = `post-${[i]}`;
     img.src = obj.image;
     blogList.append(img);
 
     const title = document.createElement("h1");
+
     title.innerHTML = obj.title;
     blogList.append(title);
 
@@ -84,6 +94,51 @@ function printBlogPosts() {
 
     const author = document.createElement("p");
     author.innerText = obj.author;
+    author.classList = "post-author";
     blogList.append(author);
+
+    //Funkar inte!!
+    const divider = document.createElement("hr");
+    divider.classList = "divider";
+    blogList.append(divider);
+  }
+}
+
+function printSideBarContent() {
+  let sideBarContent = document.getElementById("sideBarContent");
+  sideBarContent.innerHTML = "";
+
+  const sideBarLogo = document.createElement("img");
+  /* sideBarLogo.classList = "sideBarLogo"; */
+  sideBarLogo.src = "../images/logo_transparent.png";
+  sideBarContent.append(sideBarLogo);
+
+  const sideBarh1 = document.createElement("h1");
+  sideBarh1.innerText = "Tidigare inlägg:";
+  sideBarContent.append(sideBarh1);
+
+  for (let i = 0; i < blog.post.length; i++) {
+    const obj = blog.post[i];
+
+    const link = document.createElement("a");
+    sideBarContent.append(link);
+
+    const title = document.createElement("h3");
+
+    title.innerHTML = obj.title;
+    link.append(title);
+
+    const date = document.createElement("p");
+    date.innerText = obj.date;
+    link.append(date);
+
+    const divider = document.createElement("p");
+    divider.innerHTML = "___________";
+    link.append(divider);
+
+    link.onclick = function () {
+      link.target = "_blank";
+      link.href = `#post-${[i]}`;
+    };
   }
 }

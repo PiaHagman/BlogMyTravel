@@ -5,13 +5,20 @@ body {
 }
 
 .topbanner {
-  background-image: url(../images/bg-pic.jpeg);
+  background-image: url(../images/bg-pic2.png);
   height: 350px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   /* clip-path: polygon(50% 0%, 100% 0, 100% 86%, 75% 100%, 0 85%, 0 0); */
+}
+
+#logo {
+  width: 15%;
+  position: absolute;
+  top: 65%;
+  z-index: 1;
 }
 
 .sidebar {
@@ -26,6 +33,7 @@ body {
   overflow-x: hidden;
   /* transition: 0.5s; */
   padding-top: 60px;
+  z-index: 2;
 }
 
 .sidebar .closebtn {
@@ -38,6 +46,21 @@ body {
   margin-top: 25px;
 }
 
+#sideBarContent {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+}
+
+#sideBarContent h1 {
+  font-family: "Licorice", cursive;
+}
+
+#sideBarContent img {
+  width: 100px;
+  margin-bottom: 25px;
+}
+
 .openbtn {
   font-size: 20px;
   margin-left: 25px;
@@ -46,6 +69,7 @@ body {
   background-color: #8c8275;
   color: white;
   padding: 10px 15px;
+  margin-top: 20px;
   border: none;
 }
 
@@ -54,7 +78,6 @@ body {
   -webkit-transition: margin-left 0.5s;
   transition: margin-left 0.5s;
   /* If you want a transition effect */
-  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,33 +94,51 @@ body {
 }
 
 .container {
-  width: 75%;
+  width: 55%;
+  background-color: #daccc4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid black;
   margin: 25px;
+  border-radius: 5px;
 }
 
-#masterTitle {
-  font-size: 80px;
-  margin-top: 0px;
+.container p {
+  width: 85%;
 }
 
-.post-image {
-  width: 75%;
-  margin: 25px;
+.container h1 {
+  font-family: "Licorice", cursive;
+  font-size: 55px;
   margin-bottom: 0px;
 }
 
+.post-image {
+  width: 85%;
+  /* margin: 25px; */
+  margin-top: 40px;
+  border-radius: 5px;
+}
+
+.post-author {
+  font-style: italic;
+}
+
+.divider {
+  color: red;
+  border: 2px;
+}
+
 #form {
+  margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,10 +149,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 75%;
-  border: 1px solid black;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  width: 55%;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  border-radius: 5px;
+  background-color: #d4c8bc;
 }
 
 #form > input,
