@@ -47,4 +47,8 @@ export class BlogPost {
 
     this.post.unshift(newPost);
   }
+
+  deletePost(index) {
+    this.post.splice(index, 1);
+  }
 }

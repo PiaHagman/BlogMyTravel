@@ -18,6 +18,10 @@ document.querySelector("#form > button").onclick = function () {
     blog.addNewPost(image, title, text, author);
     alert("Grattis! Du har nu delat din upplevelse med hela världen.");
     printBlogPosts();
+
+    //Ingen av dessa funkar. Ska återställa formuläret...
+    clearForm();
+    //document.getElementById("form").reset();
   } else {
     alert("Fyll i alla fält för att dela din post!");
   }
@@ -33,8 +37,6 @@ document.querySelector("#topbanner > button").onclick = function () {
   document.getElementById("sidebar").style.visibility = "visible";
   printSideBarContent();
 };
-
-console.log("localStorage");
 
 //Hjälpfunktioner
 function printForm() {
@@ -86,34 +88,58 @@ function printBlogPosts() {
   for (let i = 0; i < blog.post.length; i++) {
     const obj = blog.post[i];
 
+    const item = document.createElement("div");
+    item.classList = `blogList-item`;
+    item.id = `post-${[i]}`;
+
+    blogList.append(item);
+
+    item.addEventListener("mouseenter", (e) => {
+      item.style.boxShadow = "0px 5px 50px -8px rgb(90, 88, 88)";
+      item.style.transform = "scale(0.9)";
+    });
+
+    item.addEventListener("mouseleave", (e) => {
+      item.style.boxShadow = "none";
+      item.style.transform = "none";
+    });
+
+    const dltBtn = document.createElement("button");
+    dltBtn.innerHTML = "x";
+    item.append(dltBtn);
+    dltBtn.onclick = function () {
+      deletePost(i);
+      printBlogPosts();
+    };
+
     const img = document.createElement("img");
     img.classList = "post-image";
-    img.id = `post-${[i]}`;
     img.src = obj.image;
-    blogList.append(img);
+    item.append(img);
 
     const title = document.createElement("h1");
 
     title.innerHTML = obj.title;
-    blogList.append(title);
+    item.append(title);
 
     const date = document.createElement("p");
     date.innerText = obj.date;
-    blogList.append(date);
+    item.append(date);
 
     const text = document.createElement("p");
     text.innerText = obj.text;
-    blogList.append(text);
+    item.append(text);
 
     const author = document.createElement("p");
     author.innerText = obj.author;
     author.classList = "post-author";
-    blogList.append(author);
+    item.append(author);
 
     //Funkar inte!!
     const divider = document.createElement("hr");
+    divider.innerText = "*************************";
     divider.classList = "divider";
-    blogList.append(divider);
+    item.append(divider);
   }
 }
 
@@ -154,4 +180,18 @@ function printSideBarContent() {
       link.href = `#post-${[i]}`;
     };
   }
+}
+
+function clearForm() {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => input.value(""));
+  /*   image = givenImage;
+  title = givenTitle;
+  text = givenText;
+  author = givenAuthor;
+
+  image.value.reset();
+  title.value.reset();
+  text.value.reset();
+  author.value.reset(); */
 }
