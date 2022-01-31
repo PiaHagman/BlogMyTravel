@@ -9,14 +9,18 @@ document.getElementById("logo").src = "../images/logo3.png";
 
 //Lägga till ny Todo
 document.querySelector("#form > button").onclick = function () {
-  const image = document.querySelector("#input-upload").files[0].name;
+  const image = document.querySelector("#input-upload").value;
   const title = document.querySelector("#input-title").value;
   const text = document.querySelector("#input-text").value;
   const author = document.querySelector("#input-author").value;
 
-  blog.addNewPost(image, title, text, author);
-  alert("Grattis! Du har nu delat din upplevelse med hela världen.");
-  printBlogPosts();
+  if (image && title && text && author) {
+    blog.addNewPost(image, title, text, author);
+    alert("Grattis! Du har nu delat din upplevelse med hela världen.");
+    printBlogPosts();
+  } else {
+    alert("Fyll i alla fält för att dela din post!");
+  }
 };
 
 //Sidebar döljs
