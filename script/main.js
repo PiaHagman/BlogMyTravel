@@ -7,15 +7,50 @@ printForm();
 
 document.getElementById("logo").src = "../images/logo3.png";
 
+//Lägga till ny Todo
+document.querySelector("#form > button").onclick = function () {
+  const image = document.querySelector("#input-upload").files[0].name;
+  const title = document.querySelector("#input-title").value;
+  const text = document.querySelector("#input-text").value;
+  const author = document.querySelector("#input-author").value;
+
+  blog.addNewPost(image, title, text, author);
+  alert("Grattis! Du har nu delat din upplevelse med hela världen.");
+  printBlogPosts();
+};
+
+//Sidebar döljs
+document.querySelector("#sidebar > button").onclick = function () {
+  document.getElementById("sidebar").style.visibility = "hidden";
+};
+
+//Sidebar visas
+document.querySelector("#topbanner > button").onclick = function () {
+  document.getElementById("sidebar").style.visibility = "visible";
+  printSideBarContent();
+};
+
+console.log("localStorage");
+
+//Hjälpfunktioner
 function printForm() {
   const form = document.getElementById("form");
   form.innerHTML = "";
 
-  const inputImgURL = document.createElement("input");
+  const formTitle = document.createElement("h1");
+  formTitle.innerText = "Dela ditt äventyr!";
+  form.append(formTitle);
+
+  const img = document.createElement("input");
+  img.setAttribute("type", "file");
+  img.id = "input-upload";
+  form.append(img);
+
+  /*  const inputImgURL = document.createElement("input");
   inputImgURL.id = "input-img";
   inputImgURL.setAttribute("type", "text");
   inputImgURL.setAttribute("placeholder", "Välj din finaste bild");
-  form.append(inputImgURL);
+  form.append(inputImgURL); */
 
   const inputTitle = document.createElement("input");
   inputTitle.id = "input-title";
@@ -40,32 +75,6 @@ function printForm() {
   submitBtn.innerHTML = "Dela till världen";
   form.append(submitBtn);
 }
-
-//Lägga till ny Todo
-document.querySelector("#form > button").onclick = function () {
-  const image = document.querySelector("#input-img").value;
-  const title = document.querySelector("#input-title").value;
-  const text = document.querySelector("#input-text").value;
-  const author = document.querySelector("#input-author").value;
-
-  blog.addNewPost(image, title, text, author);
-  alert("Grattis! Du har nu delat din upplevelse med hela världen.");
-  printBlogPosts();
-
-  //Uppdatera SideBar
-};
-
-/*Sidebar döljs*/
-document.querySelector("#sidebar > button").onclick = function () {
-  document.getElementById("sidebar").style.visibility = "hidden";
-};
-
-/*Sidebar visas*/
-document.querySelector("#topbanner > button").onclick = function () {
-  document.getElementById("sidebar").style.visibility = "visible";
-  printSideBarContent();
-};
-
 function printBlogPosts() {
   const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";

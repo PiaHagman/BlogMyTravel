@@ -16,8 +16,9 @@ body {
 
 #logo {
   width: 15%;
-  position: absolute;
+  position: relative;
   top: 65%;
+  left: 5%;
   z-index: 1;
 }
 .sidebar {
@@ -30,9 +31,9 @@ body {
   left: 0;
   background-color: #8c8275;
   overflow-x: hidden;
-  /* transition: 0.5s; */
   padding-top: 60px;
   z-index: 2;
+  box-shadow: 0px 5px 50px -8px rgb(90, 88, 88);
 }
 
 .sidebar .closebtn {
@@ -68,8 +69,8 @@ body {
   background-color: #8c8275;
   color: white;
   padding: 10px 15px;
-  margin-top: 20px;
   border: none;
+  position: fixed;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -89,6 +90,7 @@ body {
   flex-direction: column;
   margin: 25px;
   border-radius: 5px;
+  /* box-shadow: 0px 3px 20px -6px rgb(90, 88, 88); */
 
   & p {
     width: 85%;
@@ -105,6 +107,7 @@ body {
   /* margin: 25px; */
   margin-top: 40px;
   border-radius: 5px;
+  box-shadow: 0px 5px 50px -8px rgb(90, 88, 88);
 }
 
 .post-author {
@@ -125,7 +128,13 @@ body {
   padding-bottom: 30px;
   border-radius: 5px;
   background-color: #d4c8bc;
-
+  box-shadow: 0px 5px 30px -8px rgb(90, 88, 88);
+  & h1 {
+    font-family: "Licorice", cursive;
+    font-size: 55px;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
   & > input,
   > textarea {
     margin-bottom: 10px;
@@ -136,5 +145,18 @@ body {
 
   & > button {
     font-family: "Source Sans Pro", sans-serif;
+    padding: 10px 20px;
+    border-radius: 3px;
+    /* box-shadow: 0px 5px 30px -8px rgb(90, 88, 88); */
+    border: 0.5px solid grey;
+    margin-top: 20px;
+    background-color: white;
+  }
+
+  & button:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+    box-shadow: 0px 5px 50px -8px rgb(90, 88, 88);
+    cursor: pointer;
   }
 }
