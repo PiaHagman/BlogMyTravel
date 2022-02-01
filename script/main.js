@@ -85,13 +85,14 @@ function printForm() {
 function printBlogPosts() {
   const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";
+  blogList.addEventListener("click", dltPost);
 
   for (let i = 0; i < blog.post.length; i++) {
     const obj = blog.post[i];
 
     const item = document.createElement("div");
     item.classList = `blogList-item`;
-    item.id = `post-${[i]}`;
+    item.id = `${[i]}`;
 
     blogList.append(item);
 
@@ -107,11 +108,8 @@ function printBlogPosts() {
 
     const dltBtn = document.createElement("button");
     dltBtn.innerHTML = "x";
+    dltBtn.className = "dltBtn";
     item.append(dltBtn);
-    dltBtn.onclick = function () {
-      blog.deletePost(i);
-      printBlogPosts();
-    };
 
     const img = document.createElement("img");
     img.classList = "post-image";
@@ -142,6 +140,18 @@ function printBlogPosts() {
     divider.classList = "divider";
     item.append(divider);
   }
+
+  function dltPost(event) {
+    if (event.target.className != "dltBtn") return;
+
+    let blogToDelete = event.target.closest(".blogList-item");
+    /*  blogToDelete.remove(); */
+    let index = event.target.closest(".blogList-item").id;
+    blog.deletePost(index);
+    console.log(event.target.closest(".blogList-item").id);
+    printBlogPosts();
+  }
+  return;
 }
 
 function printSideBarContent() {
@@ -178,7 +188,7 @@ function printSideBarContent() {
 
     link.onclick = function () {
       link.target = "_blank";
-      link.href = `#post-${[i]}`;
+      link.href = `#${[i]}`;
     };
   }
 }
