@@ -35,6 +35,15 @@ document.querySelector("#topbanner > button").onclick = function () {
   printSideBarContent();
 };
 
+//Scrolla upp till toppen på sidan
+toTopLink.onclick = function () {
+  window.scrollTo(0, 0);
+};
+
+window.addEventListener("scroll", function () {
+  toTopLink.hidden = pageYOffset < document.documentElement.clientHeight;
+});
+
 //Hjälpfunktioner
 function printForm() {
   const form = document.getElementById("form");
