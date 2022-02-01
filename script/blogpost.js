@@ -5,9 +5,7 @@
 export class BlogPost {
   /**
    * Konstruktor som skapar en lista med 3 blogginlägg från start
-   * @constructor
-   * @param
-   *
+   * @constructor innehåller array med initiala blogginlägg
    */
   constructor() {
     this.post = [
@@ -36,6 +34,13 @@ export class BlogPost {
     ];
   }
 
+  /**
+   * Metod som lägger till en ny bloggpost till post-arrayen
+   * @param givenImage Bild som användare laddar upp
+   * @param givenTitle Blogginläggets titel
+   * @param givenText Blogginläggets brödtext
+   * @param givenAuthor Blogginläggets författare, alias
+   */
   addNewPost(givenImage, givenTitle, givenText, givenAuthor) {
     const newPost = {
       image: givenImage,
@@ -48,6 +53,10 @@ export class BlogPost {
     this.post.unshift(newPost);
   }
 
+  /**
+   * Metod som tar bort en bloggpost från post-arrayen
+   * @param index posten med indexnumret i arrayen som ska tas bort
+   */
   deletePost(index) {
     this.post.splice(index, 1);
   }

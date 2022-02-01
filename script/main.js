@@ -19,10 +19,7 @@ document.querySelector("#form > button").onclick = function () {
     alert("Grattis! Du har nu delat din upplevelse med hela världen.");
     printBlogPosts();
 
-    //Ingen av dessa funkar. Ska återställa formuläret...
     clearForm();
-    //document.getElementById("form").reset();
-  } else {
     alert("Fyll i alla fält för att dela din post!");
   }
 };
@@ -51,12 +48,6 @@ function printForm() {
   img.setAttribute("type", "file");
   img.id = "input-upload";
   form.append(img);
-
-  /*  const inputImgURL = document.createElement("input");
-  inputImgURL.id = "input-img";
-  inputImgURL.setAttribute("type", "text");
-  inputImgURL.setAttribute("placeholder", "Välj din finaste bild");
-  form.append(inputImgURL); */
 
   const inputTitle = document.createElement("input");
   inputTitle.id = "input-title";
@@ -184,14 +175,8 @@ function printSideBarContent() {
 
 function clearForm() {
   const inputs = document.querySelectorAll("input");
-  inputs.forEach((input) => input.value(""));
-  /*   image = givenImage;
-  title = givenTitle;
-  text = givenText;
-  author = givenAuthor;
+  inputs.forEach((input) => (input.value = ""));
 
-  image.value.reset();
-  title.value.reset();
-  text.value.reset();
-  author.value.reset(); */
+  const textArea = document.querySelector("textarea");
+  textArea.value = "";
 }
