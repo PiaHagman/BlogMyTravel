@@ -20,6 +20,7 @@ document.querySelector("#form > button").onclick = function () {
     printBlogPosts();
 
     clearForm();
+  } else {
     alert("Fyll i alla fält för att dela din post!");
   }
 };
@@ -108,7 +109,7 @@ function printBlogPosts() {
     dltBtn.innerHTML = "x";
     item.append(dltBtn);
     dltBtn.onclick = function () {
-      deletePost(i);
+      blog.deletePost(i);
       printBlogPosts();
     };
 
@@ -123,7 +124,7 @@ function printBlogPosts() {
     item.append(title);
 
     const date = document.createElement("p");
-    date.innerText = obj.date;
+    date.innerText = obj.date.toLocaleDateString();
     item.append(date);
 
     const text = document.createElement("p");
@@ -168,7 +169,7 @@ function printSideBarContent() {
     link.append(title);
 
     const date = document.createElement("p");
-    date.innerText = obj.date;
+    date.innerText = obj.date.toLocaleDateString();
     link.append(date);
 
     const divider = document.createElement("p");

@@ -45,7 +45,7 @@ export class BlogPost {
     const newPost = {
       image: givenImage,
       title: givenTitle,
-      date: new Date(Date.now()).toString(),
+      date: new Date(),
       text: givenText,
       author: givenAuthor,
     };
