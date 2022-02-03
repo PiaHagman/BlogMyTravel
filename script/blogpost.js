@@ -12,7 +12,6 @@ export class BlogPost {
       {
         image: "../images/prag.jpeg",
         title: "Frukost i Prag",
-        /* date: new Date(Date.now()).toString(), */
         date: new Date("January 28, 2022 00:00:00"),
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, repellendus? At natus quo facere eaque vitae debitis obcaecati qui, deserunt itaque eos quis ducimus deleniti quisquam earum vel repudiandae praesentium, minus eius expedita veritatis cum maxime ab possimus? Quibusdam deleniti asperiores iure pariatur et praesentium nesciunt assumenda illo accusantium rerum ratione quo ullam accusamus est iusto, deserunt velit suscipit. Enim officia, culpa assumenda quas temporibus hic magnam vel eligendi et magni, amet necessitatibus? Praesentium illum molestiae enim fugit quod soluta, velit adipisci nemo, veritatis quam molestias aliquid inventore! Officiis cum itaque ea, asperiores nesciunt sunt nemo. Officiis omnis repellendus fuga.",
         author: "MissLi",
@@ -32,6 +31,8 @@ export class BlogPost {
         author: "Paloma",
       },
     ];
+
+    this.getSavedBlogs();
   }
 
   /**
@@ -51,13 +52,31 @@ export class BlogPost {
     };
 
     this.post.unshift(newPost);
+    this.saveBlogs();
   }
 
   /**
    * Metod som tar bort en bloggpost från post-arrayen
-   * @param index posten med indexnumret i arrayen som ska tas bort
+   * @param index index för posten i arrayen som ska tas bort
    */
   deletePost(index) {
     this.post.splice(index, 1);
+    this.saveBlogs();
+  }
+
+  getSavedBlogs() {
+    let savedBlogs = JSON.parse(localStorage.getItem("post"));
+    if (savedBlogs === null) return;
+
+    this.post = [];
+
+    savedBlogs.forEach((postItem) => {
+      this.post.push(postItem);
+    });
+  }
+
+  saveBlogs() {
+    localStorage.setItem("post", JSON.stringify(this.post));
+    console.log(localStorage);
   }
 }

@@ -10,7 +10,7 @@ document.getElementById("logo").src = "../images/logo3.png";
 
 //Lägga till ny Todo
 document.querySelector("#form > button").onclick = function () {
-  const image = document.querySelector("#input-upload").files[0].name; //vet inte hur jags ka lösa detta med att inte få fakepath...
+  const image = document.querySelector("#input-upload").value; //vet inte hur jags ka lösa detta med att inte få fakepath...
   const title = document.querySelector("#input-title").value;
   const text = document.querySelector("#input-text").value;
   const author = document.querySelector("#input-author").value;
@@ -41,10 +41,6 @@ document.querySelector("#topbanner > button").onclick = function () {
 toTopLink.onclick = function () {
   window.scrollTo(0, 0);
 };
-
-/* window.addEventListener("scroll", function () {
-  toTopLink.hidden = pageYOffset < document.documentElement.clientHeight;
-}); */
 
 //Hjälpfunktioner
 function printForm() {
@@ -122,8 +118,9 @@ function printBlogPosts() {
     title.setAttribute("data-editable", "");
     item.append(title);
 
+    const newDate = new Date(obj.date);
     const date = document.createElement("p");
-    date.innerText = obj.date.toLocaleDateString();
+    date.innerText = newDate.toLocaleDateString();
     item.append(date);
 
     const text = document.createElement("p");
@@ -150,7 +147,6 @@ function printBlogPosts() {
     console.log(event.target.closest(".blogList-item").id);
     printBlogPosts();
   }
-  return;
 }
 
 function printSideBarContent() {
@@ -158,7 +154,6 @@ function printSideBarContent() {
   sideBarContent.innerHTML = "";
 
   const sideBarLogo = document.createElement("img");
-  /* sideBarLogo.classList = "sideBarLogo"; */
   sideBarLogo.src = "../images/logo_transparent.png";
   sideBarContent.append(sideBarLogo);
 
@@ -177,18 +172,19 @@ function printSideBarContent() {
     title.innerHTML = obj.title;
     link.append(title);
 
+    const newDate = new Date(obj.date);
     const date = document.createElement("p");
-    date.innerText = obj.date.toLocaleDateString();
+    date.innerText = newDate.toLocaleDateString();
     link.append(date);
 
     const divider = document.createElement("p");
     divider.innerHTML = "___________";
     link.append(divider);
 
-    link.onclick = function () {
+    /* link.onclick = function () {
       link.target = "_blank";
       link.href = `#${[i]}`;
-    };
+    }; */
   }
 }
 
