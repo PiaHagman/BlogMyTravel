@@ -128,11 +128,11 @@ button {
   margin-bottom: 0px;
 }
 
-#blogList button {
+#blogList .blogList-item > button {
   display: block;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 20px;
+  float: right;
+  font-size: 15px;
+  margin: 20px 50px 20px 0px;
   padding: 5px 10px;
   cursor: pointer;
 }

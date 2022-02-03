@@ -1,15 +1,16 @@
 import { BlogPost } from "./blogPost.js";
+import { registerEditableBehaviour } from "./util.js";
 
 const blog = new BlogPost();
-
-printBlogPosts();
 printForm();
+printBlogPosts();
+registerEditableBehaviour();
 
 document.getElementById("logo").src = "../images/logo3.png";
 
 //Lägga till ny Todo
 document.querySelector("#form > button").onclick = function () {
-  const image = document.querySelector("#input-upload").value;
+  const image = document.querySelector("#input-upload").files[0].name; //vet inte hur jags ka lösa detta med att inte få fakepath...
   const title = document.querySelector("#input-title").value;
   const text = document.querySelector("#input-text").value;
   const author = document.querySelector("#input-author").value;
@@ -41,9 +42,9 @@ toTopLink.onclick = function () {
   window.scrollTo(0, 0);
 };
 
-window.addEventListener("scroll", function () {
+/* window.addEventListener("scroll", function () {
   toTopLink.hidden = pageYOffset < document.documentElement.clientHeight;
-});
+}); */
 
 //Hjälpfunktioner
 function printForm() {
@@ -96,18 +97,18 @@ function printBlogPosts() {
 
     blogList.append(item);
 
-    item.addEventListener("mouseenter", (e) => {
+    item.addEventListener("pointerenter", (e) => {
       item.style.boxShadow = "0px 5px 50px -8px rgb(90, 88, 88)";
-      item.style.transform = "scale(0.9)";
+      item.style.transform = "scale(0.95)";
     });
 
-    item.addEventListener("mouseleave", (e) => {
+    item.addEventListener("pointerleave", (e) => {
       item.style.boxShadow = "none";
       item.style.transform = "none";
     });
 
     const dltBtn = document.createElement("button");
-    dltBtn.innerHTML = "x";
+    dltBtn.innerHTML = "Radera inlägg";
     dltBtn.className = "dltBtn";
     item.append(dltBtn);
 
@@ -117,8 +118,8 @@ function printBlogPosts() {
     item.append(img);
 
     const title = document.createElement("h1");
-
     title.innerHTML = obj.title;
+    title.setAttribute("data-editable", "");
     item.append(title);
 
     const date = document.createElement("p");
@@ -144,8 +145,6 @@ function printBlogPosts() {
   function dltPost(event) {
     if (event.target.className != "dltBtn") return;
 
-    let blogToDelete = event.target.closest(".blogList-item");
-    /*  blogToDelete.remove(); */
     let index = event.target.closest(".blogList-item").id;
     blog.deletePost(index);
     console.log(event.target.closest(".blogList-item").id);
