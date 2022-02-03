@@ -8,8 +8,11 @@ export class BlogPost {
    * @constructor innehåller array med initiala blogginlägg
    */
   constructor() {
+    let idCounter = 0;
+
     this.post = [
       {
+        id: (idCounter += 1),
         image: "../images/prag.jpeg",
         title: "Frukost i Prag",
         date: new Date("January 28, 2022 00:00:00"),
@@ -17,6 +20,7 @@ export class BlogPost {
         author: "MissLi",
       },
       {
+        id: (idCounter += 1),
         image: "../images/vy.jpeg",
         title: "Familjeäventyr i Slovenien",
         date: new Date("January 27, 2022 00:00:00"),
@@ -24,6 +28,7 @@ export class BlogPost {
         author: "Father of Two",
       },
       {
+        id: (idCounter += 1),
         image: "../images/tagluff.jpeg",
         title: "Runt Europa i tåg",
         date: new Date("January 26, 2022 00:00:00"),
@@ -44,6 +49,7 @@ export class BlogPost {
    */
   addNewPost(givenImage, givenTitle, givenText, givenAuthor) {
     const newPost = {
+      id: this.post.length + 1,
       image: givenImage,
       title: givenTitle,
       date: new Date(),
@@ -59,7 +65,8 @@ export class BlogPost {
    * Metod som tar bort en bloggpost från post-arrayen
    * @param index index för posten i arrayen som ska tas bort
    */
-  deletePost(index) {
+  deletePost(id) {
+    const index = this.post.findIndex((p) => p.id == id);
     this.post.splice(index, 1);
     this.saveBlogs();
   }

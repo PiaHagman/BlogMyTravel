@@ -8,7 +8,7 @@ registerEditableBehaviour();
 
 document.getElementById("logo").src = "../images/logo3.png";
 
-//Lägga till ny Todo
+//Lägga till ny bloggpost
 document.querySelector("#form > button").onclick = function () {
   const image = document.querySelector("#input-upload").value; //vet inte hur jags ka lösa detta med att inte få fakepath...
   const title = document.querySelector("#input-title").value;
@@ -19,7 +19,6 @@ document.querySelector("#form > button").onclick = function () {
     blog.addNewPost(image, title, text, author);
     alert("Grattis! Du har nu delat din upplevelse med hela världen.");
     printBlogPosts();
-
     clearForm();
   } else {
     alert("Fyll i alla fält för att dela din post!");
@@ -82,14 +81,14 @@ function printForm() {
 function printBlogPosts() {
   const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";
-  blogList.addEventListener("click", dltPost);
+  /* blogList.addEventListener("click", dltPost); */
 
   for (let i = 0; i < blog.post.length; i++) {
     const obj = blog.post[i];
 
     const item = document.createElement("div");
     item.classList = `blogList-item`;
-    item.id = `${[i]}`;
+    item.id = `${obj.id}`;
 
     blogList.append(item);
 
@@ -107,6 +106,12 @@ function printBlogPosts() {
     dltBtn.innerHTML = "Radera inlägg";
     dltBtn.className = "dltBtn";
     item.append(dltBtn);
+    dltBtn.onclick = function () {
+      console.log(obj.id);
+      blog.deletePost(obj.id);
+
+      printBlogPosts();
+    };
 
     const img = document.createElement("img");
     img.classList = "post-image";
@@ -132,21 +137,21 @@ function printBlogPosts() {
     author.classList = "post-author";
     item.append(author);
 
-    //Funkar inte!!
     const divider = document.createElement("hr");
     divider.innerText = "*************************";
     divider.classList = "divider";
     item.append(divider);
   }
 
-  function dltPost(event) {
+  /*   function dltPost(event) {
     if (event.target.className != "dltBtn") return;
 
-    let index = event.target.closest(".blogList-item").id;
-    blog.deletePost(index);
+    let id = event.target.closest(".blogList-item").id;
+
     console.log(event.target.closest(".blogList-item").id);
+    blog.deletePost(id);
     printBlogPosts();
-  }
+  } */
 }
 
 function printSideBarContent() {
@@ -181,10 +186,10 @@ function printSideBarContent() {
     divider.innerHTML = "___________";
     link.append(divider);
 
-    /* link.onclick = function () {
+    link.onclick = function () {
       link.target = "_blank";
-      link.href = `#${[i]}`;
-    }; */
+      link.href = `#${obj.id}`;
+    };
   }
 }
 
