@@ -9,15 +9,14 @@ export class BlogPost {
    */
   constructor() {
     let idCounter = 0;
-
     this.post = [
       {
         id: (idCounter += 1),
-        image: "../images/prag.jpeg",
-        title: "Frukost i Prag",
-        date: new Date("January 28, 2022 00:00:00"),
+        image: "../images/tagluff.jpeg",
+        title: "Runt Europa i tåg",
+        date: new Date("January 26, 2022 00:00:00"),
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, repellendus? At natus quo facere eaque vitae debitis obcaecati qui, deserunt itaque eos quis ducimus deleniti quisquam earum vel repudiandae praesentium, minus eius expedita veritatis cum maxime ab possimus? Quibusdam deleniti asperiores iure pariatur et praesentium nesciunt assumenda illo accusantium rerum ratione quo ullam accusamus est iusto, deserunt velit suscipit. Enim officia, culpa assumenda quas temporibus hic magnam vel eligendi et magni, amet necessitatibus? Praesentium illum molestiae enim fugit quod soluta, velit adipisci nemo, veritatis quam molestias aliquid inventore! Officiis cum itaque ea, asperiores nesciunt sunt nemo. Officiis omnis repellendus fuga.",
-        author: "MissLi",
+        author: "Paloma",
       },
       {
         id: (idCounter += 1),
@@ -29,14 +28,16 @@ export class BlogPost {
       },
       {
         id: (idCounter += 1),
-        image: "../images/tagluff.jpeg",
-        title: "Runt Europa i tåg",
-        date: new Date("January 26, 2022 00:00:00"),
+        image: "../images/prag.jpeg",
+        title: "Frukost i Prag",
+        date: new Date("January 28, 2022 00:00:00"),
         text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, repellendus? At natus quo facere eaque vitae debitis obcaecati qui, deserunt itaque eos quis ducimus deleniti quisquam earum vel repudiandae praesentium, minus eius expedita veritatis cum maxime ab possimus? Quibusdam deleniti asperiores iure pariatur et praesentium nesciunt assumenda illo accusantium rerum ratione quo ullam accusamus est iusto, deserunt velit suscipit. Enim officia, culpa assumenda quas temporibus hic magnam vel eligendi et magni, amet necessitatibus? Praesentium illum molestiae enim fugit quod soluta, velit adipisci nemo, veritatis quam molestias aliquid inventore! Officiis cum itaque ea, asperiores nesciunt sunt nemo. Officiis omnis repellendus fuga.",
-        author: "Paloma",
+        author: "MissLi",
       },
     ];
-
+    if (localStorage.length == 0) {
+      this.saveBlogs();
+    }
     this.getSavedBlogs();
   }
 
@@ -57,7 +58,7 @@ export class BlogPost {
       author: givenAuthor,
     };
 
-    this.post.unshift(newPost);
+    this.post.push(newPost);
     this.saveBlogs();
   }
 
@@ -66,7 +67,7 @@ export class BlogPost {
    * @param index index för posten i arrayen som ska tas bort
    */
   deletePost(id) {
-    const index = this.post.findIndex((p) => p.id == id);
+    const index = this.post.findIndex((p) => p.id === id);
     this.post.splice(index, 1);
     this.saveBlogs();
   }
@@ -84,6 +85,5 @@ export class BlogPost {
 
   saveBlogs() {
     localStorage.setItem("post", JSON.stringify(this.post));
-    console.log(localStorage);
   }
 }
