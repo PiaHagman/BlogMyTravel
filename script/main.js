@@ -1,5 +1,4 @@
 import { BlogPost } from "./blogPost.js";
-import { registerEditableBehaviour } from "./util.js";
 
 const blog = new BlogPost();
 printForm();
@@ -51,7 +50,13 @@ function printForm() {
   form.append(formTitle);
 
   const img = document.createElement("input");
-  img.setAttribute("type", "file");
+  img.setAttribute("type", "text");
+  /* file.setAttribute("accept", "image/*"); */
+  img.setAttribute(
+    "placeholder",
+    "Ange sökväg, exempelvis: ../images/city.jpeg"
+  );
+
   img.id = "input-upload";
   form.append(img);
 
@@ -166,7 +171,7 @@ function printSideBarContent() {
   sideBarh1.innerText = "Tidigare inlägg:";
   sideBarContent.append(sideBarh1);
 
-  for (let i = 0; i < blog.post.length; i++) {
+  for (let i = blog.post.length - 1; i >= 0; i -= 1) {
     const obj = blog.post[i];
 
     const link = document.createElement("a");
