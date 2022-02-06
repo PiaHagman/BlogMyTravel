@@ -46,9 +46,9 @@ describe("deletePost()", function () {
   blog.addNewPost(testObj.img, testObj.title, testObj.text, testObj.author);
 
   it("compares the length of lists", function () {
-    const postToDeleteId = blog.post.length;
+    const index = blog.post.length - 1;
     const bfDeletePost = blog.post.length;
-    blog.deletePost(postToDeleteId);
+    blog.deletePost(index);
     assert.equal(bfDeletePost - 1, blog.post.length);
   });
 });

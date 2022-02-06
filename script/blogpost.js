@@ -66,8 +66,7 @@ export class BlogPost {
    * Metod som tar bort en bloggpost från post-arrayen
    * @param index index för posten i arrayen som ska tas bort
    */
-  deletePost(id) {
-    const index = this.post.findIndex((p) => p.id === id);
+  deletePost(index) {
     this.post.splice(index, 1);
     this.saveBlogs();
   }

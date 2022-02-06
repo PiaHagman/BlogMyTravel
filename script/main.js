@@ -3,13 +3,12 @@ import { BlogPost } from "./blogPost.js";
 const blog = new BlogPost();
 printForm();
 printBlogPosts();
-registerEditableBehaviour();
 
 document.getElementById("logo").src = "../images/logo3.png";
 
 //Lägga till ny bloggpost
 document.querySelector("#form > button").onclick = function () {
-  const image = document.querySelector("#input-upload").value; //vet inte hur jags ka lösa detta med att inte få fakepath...
+  const image = document.querySelector("#input-upload").value;
   const title = document.querySelector("#input-title").value;
   const text = document.querySelector("#input-text").value;
   const author = document.querySelector("#input-author").value;
@@ -56,8 +55,8 @@ function printForm() {
     "placeholder",
     "Ange sökväg, exempelvis: ../images/city.jpeg"
   );
-
   img.id = "input-upload";
+  /* img.setAttribute("list", "image-paths"); */
   form.append(img);
 
   const inputTitle = document.createElement("input");
@@ -112,9 +111,7 @@ function printBlogPosts() {
     dltBtn.className = "dltBtn";
     item.append(dltBtn);
     dltBtn.onclick = function () {
-      console.log(obj.id);
-      blog.deletePost(obj.id);
-
+      blog.deletePost([i]);
       printBlogPosts();
     };
 
