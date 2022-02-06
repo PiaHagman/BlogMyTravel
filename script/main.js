@@ -4,7 +4,8 @@ const blog = new BlogPost();
 printForm();
 printBlogPosts();
 
-document.getElementById("logo").src = "../images/logo3.png";
+const headLogo = document.getElementById("logo");
+headLogo.src = "../images/logo3.png";
 
 //Lägga till ny bloggpost
 document.querySelector("#form > button").onclick = function () {

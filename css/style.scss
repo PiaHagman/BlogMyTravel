@@ -22,8 +22,9 @@ button {
 
 #logo {
   width: 15%;
-  position: relative;
-  top: 65%;
+  min-width: 150px;
+  position: absolute;
+  top: 250px;
   left: 5%;
   z-index: 1;
 }
@@ -38,7 +39,7 @@ button {
   background-color: #8c8275;
   overflow-x: hidden;
   padding-top: 60px;
-  z-index: 2;
+  z-index: 4;
   box-shadow: 0px 5px 50px -8px rgb(90, 88, 88);
 }
 
@@ -78,6 +79,7 @@ button {
   padding: 10px 15px;
   border: none;
   position: fixed;
+  z-index: 3;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -104,6 +106,7 @@ button {
     font-family: "Licorice", cursive;
     font-size: 55px;
     margin-bottom: 0px;
+    text-align: center;
   }
 
   & .blogList-item > button {
@@ -117,6 +120,7 @@ button {
 
   & div {
     padding-bottom: 30px;
+    border-radius: 3px;
   }
 }
 
@@ -145,9 +149,11 @@ button {
   border-radius: 5px;
   background-color: #d4c8bc;
   box-shadow: 0px 5px 30px -8px rgb(90, 88, 88);
+  z-index: 2;
   & h1 {
     font-family: "Licorice", cursive;
     font-size: 55px;
+    text-align: center;
     margin-top: 0;
     margin-bottom: 30px;
   }

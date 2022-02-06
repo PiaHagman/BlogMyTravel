@@ -23,17 +23,13 @@ describe("addNewPost()", function () {
   it("should compare length of lists", function () {
     const bfAddPost = blog.post.length;
 
-    /* const img = "../images/vy.jpeg";
-    const title = "Test post";
-    const text = "djsjfh";
-    const author = "jhf"; */
-
     blog.addNewPost(testObj.img, testObj.title, testObj.text, testObj.author);
     assert.equal(bfAddPost + 1, blog.post.length);
   });
 
   it("checks that the added title parameter exists", function () {
-    const newPostIndex = blog.post.findIndex((p) => p.id == blog.post.length);
+    const newPostIndex = blog.post.length - 1;
+    console.log(newPostIndex);
     assert.include(
       [blog.post[newPostIndex].title],
       "Test post",
