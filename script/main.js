@@ -92,7 +92,7 @@ function printBlogPosts() {
 
     const item = document.createElement("div");
     item.classList = `blogList-item`;
-    item.id = `${obj.id}`;
+    item.id = `${obj.title}`;
 
     blogList.append(item);
 
@@ -111,7 +111,9 @@ function printBlogPosts() {
     dltBtn.className = "dltBtn";
     item.append(dltBtn);
     dltBtn.onclick = function () {
+      console.log(obj.id);
       blog.deletePost([i]);
+
       printBlogPosts();
     };
 
@@ -190,7 +192,7 @@ function printSideBarContent() {
 
     link.onclick = function () {
       link.target = "_blank";
-      link.href = `#${obj.id}`;
+      link.href = `#${obj.title}`;
     };
   }
 }
