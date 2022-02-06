@@ -50,13 +50,15 @@ function printForm() {
 
   const img = document.createElement("input");
   img.setAttribute("type", "text");
-  /* file.setAttribute("accept", "image/*"); */
-  img.setAttribute(
-    "placeholder",
-    "Ange sökväg, exempelvis: ../images/city.jpeg"
-  );
+  img.setAttribute("placeholder", "Ange sökväg eller välj från listan.");
+  img.setAttribute("list", "images");
   img.id = "input-upload";
-  /* img.setAttribute("list", "image-paths"); */
+  img.innerHTML = `<datalist id="images">
+  <option value="../images/city.jpeg">
+  <option value="../images/tagluff.jpeg">
+  <option value="../images/vy.jpeg">
+  <option value="../images/prag.jpeg">
+</datalist>`;
   form.append(img);
 
   const inputTitle = document.createElement("input");
