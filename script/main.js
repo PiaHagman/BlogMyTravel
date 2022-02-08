@@ -1,8 +1,11 @@
 import { BlogPost } from "./blogPost.js";
+import {} from "./util.js";
 
 const blog = new BlogPost();
+console.log(blog.post);
 printForm();
 printBlogPosts();
+/* console.log("Hej".addStar()); */
 
 const headLogo = document.getElementById("logo");
 headLogo.src = "../images/logo3.png";
@@ -109,6 +112,7 @@ function printBlogPosts() {
       item.style.transform = "none";
     });
 
+    //Todo bryt ut i egen funktion
     const dltBtn = document.createElement("button");
     dltBtn.innerHTML = "Radera inlägg";
     dltBtn.className = "dltBtn";
@@ -194,7 +198,7 @@ function printSideBarContent() {
     link.append(divider);
 
     link.onclick = function () {
-      link.target = "_blank";
+      /* link.target = "_blank"; */
       link.href = `#${obj.title}`;
     };
   }

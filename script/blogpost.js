@@ -1,10 +1,11 @@
 /**
- * Denna klass skapar listan med bloggposter samt innehåller
- * metoder som skapar blogginlägg och plockar bort dem. FYLL PÅ!!!
+ * Klassen skapar listan med initiala bloggposter samt innehåller
+ * metoder som skapar blogginlägg och plockar bort dem, samt sparar
+ * till och hämtar från localStorage();
  */
 export class BlogPost {
   /**
-   * Konstruktor som skapar en lista med 3 blogginlägg från start
+   * Konstruktor som skapar en lista med 3 blogginlägg från start om localStorage är tom.
    * @constructor innehåller array med initiala blogginlägg
    */
   constructor() {
@@ -31,14 +32,14 @@ export class BlogPost {
         author: "MissLi",
       },
     ];
-    if (localStorage.length == 0) {
+    if (localStorage.length === 0) {
       this.saveBlogs();
     }
     this.getSavedBlogs();
   }
 
   /**
-   * Metod som lägger till en ny bloggpost till post-arrayen
+   * Metod som lägger till en ny bloggpost till post-arrayen. Datumet skapas automatiskt.
    * @param givenImage Bild som användare laddar upp
    * @param givenTitle Blogginläggets titel
    * @param givenText Blogginläggets brödtext
@@ -66,8 +67,12 @@ export class BlogPost {
     this.saveBlogs();
   }
 
+  /**
+   * Metod som gör om den sparade strängen i localStorage till objekt genom
+   * JSON.parse() och lägger till dem i post-arrayen.
+   */
   getSavedBlogs() {
-    let savedBlogs = JSON.parse(localStorage.getItem("post"));
+    let savedBlogs = JSON.parse(localStorage.getItem("postArray"));
     if (savedBlogs === null) return;
 
     this.post = [];
@@ -77,7 +82,11 @@ export class BlogPost {
     });
   }
 
+  /**
+   * Metod som gör om objekten i post-arrayen till en sträng
+   * genom JSON.stringify och sparas ner i localStorage.
+   */
   saveBlogs() {
-    localStorage.setItem("post", JSON.stringify(this.post));
+    localStorage.setItem("postArray", JSON.stringify(this.post));
   }
 }
