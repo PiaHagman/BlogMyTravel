@@ -27,7 +27,6 @@ describe("Tests BlogPost.js", function () {
   describe("addNewPost()", function () {
     it("should compare length of lists", function () {
       const bfAddPost = blog.post.length;
-
       blog.addNewPost(testObj.img, testObj.title, testObj.text, testObj.author);
       assert.equal(bfAddPost + 1, blog.post.length);
     });
@@ -42,17 +41,12 @@ describe("Tests BlogPost.js", function () {
       );
     });
 
-    it("does not add post if a parameter is missing", function () {});
+    it("does not add post if parameters is missing", function () {
+      const currentLengthOfArray = blog.post.length;
+      blog.addNewPost();
+      assert.equal(currentLengthOfArray, blog.post.length);
+    });
   });
-  /*  it("should clear localStorage", function () {
-    const newPostIndex = blog.post.length - 1;
-    localStorage.removeItem(post);
-    assert.notInclude(
-      [blog.post[newPostIndex].title],
-      "Test post",
-      "Compare strings of title"
-    );
-  }); */
 
   describe("deletePost()", function () {
     blog.addNewPost(testObj.img, testObj.title, testObj.text, testObj.author);
@@ -64,6 +58,14 @@ describe("Tests BlogPost.js", function () {
       assert.equal(bfDeletePost - 1, blog.post.length);
     });
 
-    it("does not delete post if index doesn't exist", function () {});
+    it("does not delete post if index doesn't exist", function () {
+      const indexThatDoesNotExist = blog.post.length;
+      const lengthBeforeDeleting = blog.post.length;
+
+      blog.deletePost(indexThatDoesNotExist);
+
+      const lengthAfterDeleting = blog.post.length;
+      assert.equal(lengthBeforeDeleting, lengthAfterDeleting);
+    });
   });
 });

@@ -53,9 +53,21 @@ export class BlogPost {
       text: givenText,
       author: givenAuthor,
     };
-
-    this.post.push(newPost);
-    this.saveBlogs();
+    if (
+      givenImage === "" ||
+      givenImage === undefined ||
+      givenTitle === "" ||
+      givenTitle === undefined ||
+      givenText === "" ||
+      givenText === undefined ||
+      givenAuthor === "" ||
+      givenAuthor === undefined
+    ) {
+      return;
+    } else {
+      this.post.push(newPost);
+      this.saveBlogs();
+    }
   }
 
   /**

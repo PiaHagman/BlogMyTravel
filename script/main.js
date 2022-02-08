@@ -17,14 +17,14 @@ document.querySelector("#form > button").onclick = function () {
   const text = document.querySelector("#input-text").value;
   const author = document.querySelector("#input-author").value;
 
-  if (image && title && text && author) {
-    blog.addNewPost(image, title, text, author);
-    alert("Grattis! Du har nu delat din upplevelse med hela världen.");
-    printBlogPosts();
-    clearForm();
-  } else {
-    alert("Fyll i alla fält för att dela din post!");
-  }
+  //if (image && title && text && author) {
+  blog.addNewPost(image, title, text, author);
+  alert("Grattis! Du har nu delat din upplevelse med hela världen.");
+  printBlogPosts();
+  clearForm();
+  //} else {
+  //  alert("Fyll i alla fält för att dela din post!");
+  //}
 };
 
 //Sidebar döljs
