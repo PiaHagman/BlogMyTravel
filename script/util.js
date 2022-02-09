@@ -1,11 +1,7 @@
-/* String.prototype.addStar = function () {
-  let output = "";
-  for (let char of this) {
-    output += char + "*";
-  }
-  return output.slice(0, -1); //Börjar på första char och -1 gör att den hoppar en till vänster (vilket tar bort sista character)
-}; */
-
+Object.prototype.toString = function () {
+  // 'this' är det generella objektet som ska bli en sträng
+  return JSON.stringify(this);
+};
 Storage.prototype.getObject = function (key) {
   return JSON.parse(this.getItem(key));
 };

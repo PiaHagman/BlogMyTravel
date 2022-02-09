@@ -1,12 +1,11 @@
 /**
  * Klassen skapar listan med initiala bloggposter samt innehåller
  * metoder som skapar blogginlägg och plockar bort dem, samt sparar
- * till och hämtar från localStorage();
+ * till och hämtar från localStorage().
  */
 export class BlogPost {
   /**
    * Konstruktor som skapar en lista med 3 blogginlägg från start om localStorage är tom.
-   * @constructor innehåller array med initiala blogginlägg
    */
   constructor() {
     this.post = [
@@ -40,10 +39,11 @@ export class BlogPost {
 
   /**
    * Metod som lägger till en ny bloggpost till post-arrayen. Datumet skapas automatiskt.
-   * @param givenImage Bild som användare laddar upp
-   * @param givenTitle Blogginläggets titel
-   * @param givenText Blogginläggets brödtext
-   * @param givenAuthor Blogginläggets författare, alias
+   * @param {string} givenImage Bildurl som användare laddar upp
+   * @param {string} givenTitle Blogginläggets titel
+   * @param {string} givenText Blogginläggets brödtext
+   * @param {string} givenAuthor Blogginläggets författare, alias
+   * @returns {void}
    */
   addNewPost(givenImage, givenTitle, givenText, givenAuthor) {
     const newPost = {
@@ -72,7 +72,8 @@ export class BlogPost {
 
   /**
    * Metod som tar bort en bloggpost från post-arrayen
-   * @param index index för posten i arrayen som ska tas bort
+   * @param {number} index index för posten i arrayen som ska tas bort.
+   * @returns {void}
    */
   deletePost(index) {
     this.post.splice(index, 1);
@@ -82,6 +83,7 @@ export class BlogPost {
   /**
    * Metod som gör om den sparade strängen i localStorage till objekt genom
    * JSON.parse() och lägger till dem i post-arrayen.
+   * @returns {void}
    */
   getSavedBlogs() {
     let savedBlogs = JSON.parse(localStorage.getItem("postArray"));
@@ -97,6 +99,7 @@ export class BlogPost {
   /**
    * Metod som gör om objekten i post-arrayen till en sträng
    * genom JSON.stringify och sparas ner i localStorage.
+   * @returns {void}
    */
   saveBlogs() {
     localStorage.setItem("postArray", JSON.stringify(this.post));

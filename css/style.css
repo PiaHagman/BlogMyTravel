@@ -107,6 +107,7 @@ button {
 
 #blogList {
   width: 55%;
+  max-width: 1000px;
   margin-top: 30px;
   background-color: #daccc4;
   display: -webkit-box;
@@ -174,6 +175,7 @@ button {
       -ms-flex-align: center;
           align-items: center;
   width: 55%;
+  max-width: 1000px;
   padding-top: 40px;
   padding-bottom: 30px;
   border-radius: 5px;
