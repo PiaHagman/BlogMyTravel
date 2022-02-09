@@ -2,7 +2,6 @@ import { BlogPost } from "./blogPost.js";
 import {} from "./util.js";
 
 const blog = new BlogPost();
-console.log(blog.post);
 printForm();
 printBlogPosts();
 /* console.log("Hej".addStar()); */

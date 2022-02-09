@@ -73,7 +73,7 @@ describe("Tests BlogPost.js", function () {
     });
   });
 
-  describe("getSavedBlogs() och saveBlogs()", function () {
+  describe("loadSavedPosts() och saveBlogs()", function () {
     it("should asure that objects are saved in LocalStorage", function () {
       const savedStringBefore = localStorage.getItem("postArray");
       blog.post = [];
@@ -89,11 +89,11 @@ describe("Tests BlogPost.js", function () {
       assert.equal(savedStringAfter, newString);
     });
 
-    it("checks that getSavedBlogs() get posts from localStorage()", function () {
-      blog.getSavedBlogs();
+    it("checks that loadSavedPosts() get posts from localStorage()", function () {
+      blog.loadSavedPosts();
       const numberOfPostsBefore = blog.post.length;
       blog.addNewPost(testObj.img, testObj.title, testObj.text, testObj.author);
-      blog.getSavedBlogs();
+      blog.loadSavedPosts();
       const numberOfPostAfter = blog.post.length;
 
       assert.equal(numberOfPostsBefore + 1, numberOfPostAfter);

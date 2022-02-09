@@ -34,7 +34,7 @@ export class BlogPost {
     if (localStorage.length === 0) {
       this.saveBlogs();
     }
-    this.getSavedBlogs();
+    this.loadSavedPosts();
   }
 
   /**
@@ -85,7 +85,7 @@ export class BlogPost {
    * JSON.parse() och lägger till dem i post-arrayen.
    * @returns {void}
    */
-  getSavedBlogs() {
+  loadSavedPosts() {
     let savedBlogs = JSON.parse(localStorage.getItem("postArray"));
     if (savedBlogs === null) return;
 
