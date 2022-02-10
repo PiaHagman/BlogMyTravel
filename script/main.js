@@ -4,7 +4,6 @@ import {} from "./util.js";
 const blog = new BlogPost();
 printForm();
 printBlogPosts();
-/* console.log("Hej".addStar()); */
 
 const headLogo = document.getElementById("logo");
 headLogo.src = "../images/logo3.png";
@@ -16,14 +15,14 @@ document.querySelector("#form > button").onclick = function () {
   const text = document.querySelector("#input-text").value;
   const author = document.querySelector("#input-author").value;
 
-  //if (image && title && text && author) {
-  blog.addNewPost(image, title, text, author);
-  alert("Grattis! Du har nu delat din upplevelse med hela världen.");
-  printBlogPosts();
-  clearForm();
-  //} else {
-  //  alert("Fyll i alla fält för att dela din post!");
-  //}
+  if (image && title && text && author) {
+    blog.addNewPost(image, title, text, author);
+    alert("Grattis! Du har nu delat din upplevelse med hela världen.");
+    printBlogPosts();
+    clearForm();
+  } else {
+    alert("Fyll i alla fält för att dela din post!");
+  }
 };
 
 //Sidebar döljs
@@ -111,7 +110,6 @@ function printBlogPosts() {
       item.style.transform = "none";
     });
 
-    //Todo bryt ut i egen funktion
     const dltBtn = document.createElement("button");
     dltBtn.innerHTML = "Radera inlägg";
     dltBtn.className = "dltBtn";
@@ -152,16 +150,6 @@ function printBlogPosts() {
     divider.classList = "divider";
     item.append(divider);
   }
-
-  /*   function dltPost(event) {
-    if (event.target.className != "dltBtn") return;
-
-    let id = event.target.closest(".blogList-item").id;
-
-    console.log(event.target.closest(".blogList-item").id);
-    blog.deletePost(id);
-    printBlogPosts();
-  } */
 }
 
 function printSideBarContent() {

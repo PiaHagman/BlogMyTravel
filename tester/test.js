@@ -50,6 +50,17 @@ describe("Tests BlogPost.js", function () {
       blog.addNewPost();
       assert.equal(currentLengthOfArray, blog.post.length);
     });
+
+    /* it("should throw an exception when image source is not found", function () {
+      assert.throws(function () {
+        blog.addNewPost(
+          "This is not a valid source",
+          testObj.title,
+          testObj.text,
+          testObj.author
+        );
+      });
+    }); */
   });
 
   describe("deletePost()", function () {

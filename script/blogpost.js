@@ -1,7 +1,7 @@
 /**
  * Klassen skapar listan med initiala bloggposter samt innehåller
  * metoder som skapar blogginlägg och plockar bort dem, samt sparar
- * till och hämtar från localStorage().
+ * till och hämtar från localStorage.
  */
 export class BlogPost {
   /**
