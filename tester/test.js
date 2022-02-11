@@ -51,16 +51,8 @@ describe("Tests BlogPost.js", function () {
       assert.equal(currentLengthOfArray, blog.post.length);
     });
 
-    /* it("should throw an exception when image source is not found", function () {
-      assert.throws(function () {
-        blog.addNewPost(
-          "This is not a valid source",
-          testObj.title,
-          testObj.text,
-          testObj.author
-        );
-      });
-    }); */
+    /* TODO hitta ett sätt som kastar ett undantag om bildfilen inte hittas. Jag har provat flera 
+    sätt med assert.throw(function, message), men får det inte att fungera */
   });
 
   describe("deletePost()", function () {

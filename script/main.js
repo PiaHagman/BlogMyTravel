@@ -89,7 +89,6 @@ function printForm() {
 function printBlogPosts() {
   const blogList = document.getElementById("blogList");
   blogList.innerHTML = "";
-  /* blogList.addEventListener("click", dltPost); */
 
   for (let i = blog.post.length - 1; i >= 0; i -= 1) {
     const obj = blog.post[i];
