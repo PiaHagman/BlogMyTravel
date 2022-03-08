@@ -1,4 +1,4 @@
-import { BlogPost } from "./blogPost.js";
+import { BlogPost } from "./blogposts.js";
 import {} from "./util.js";
 
 const blog = new BlogPost();
