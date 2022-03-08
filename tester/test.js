@@ -1,9 +1,9 @@
-import { BlogPost } from "../script/blogPost.js";
+import { BlogPost } from "../script/blogposts.js";
 import {} from "../script/util.js";
 
 const assert = chai.assert;
 
-describe("Tests BlogPost.js", function () {
+describe("Tests blogposts.js", function () {
   const blog = new BlogPost();
   const content = localStorage.stashContent();
 
