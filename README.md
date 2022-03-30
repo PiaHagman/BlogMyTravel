@@ -9,3 +9,6 @@ Innehåll:
 - En JS fil som integrerar klassen med hemsidan (DOM manipulering, glue-coden)
 - En mocha testsuite sida 
 - Dokumentation genom JSDoc 
+
+
+https://piahagman.github.io/BlogMyTravel/
