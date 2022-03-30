@@ -10,5 +10,5 @@ Innehåll:
 - En mocha testsuite sida 
 - Dokumentation genom JSDoc 
 
-
+Obs ej responsiv
 https://piahagman.github.io/BlogMyTravel/
